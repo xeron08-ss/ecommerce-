@@ -43,6 +43,15 @@
       box-shadow: 0 18px 35px rgba(139,92,246,.30);
     }
 
+    .btn-soft {
+      transition: .25s ease;
+    }
+
+    .btn-soft:hover {
+      transform: translateY(-2px);
+      border-color: rgba(34,211,238,.35);
+    }
+
     .card-hover {
       transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
     }
@@ -85,15 +94,13 @@
     }
 
     .category-chip.active,
-    .filter-btn.active {
+    .filter-btn.active,
+    .portfolio-chip.active,
+    .style-chip.active,
+    .quiz-option.active {
       background: linear-gradient(90deg, #06b6d4, #8b5cf6);
       border-color: transparent;
       color: white;
-    }
-
-    .hidden-product,
-    .hidden-portfolio {
-      display: none !important;
     }
 
     .line-clamp-2 {
@@ -125,6 +132,16 @@
     @keyframes marqueeMove {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
+    }
+
+    .hidden-card { display: none !important; }
+
+    .range-value {
+      background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+    }
+
+    .compare-handle {
+      box-shadow: 0 0 0 4px rgba(255,255,255,.18);
     }
 
     @media (max-width: 768px) {
@@ -162,8 +179,10 @@
       <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-gray-200">
         <a href="#home" class="hover:text-cyan-400 transition">Home</a>
         <a href="#shop" class="hover:text-cyan-400 transition">Shop</a>
+        <a href="#compare" class="hover:text-cyan-400 transition">Before/After</a>
+        <a href="#builder" class="hover:text-cyan-400 transition">Builder</a>
+        <a href="#wizard" class="hover:text-cyan-400 transition">Wizard</a>
         <a href="#portfolio" class="hover:text-cyan-400 transition">Portfolio</a>
-        <a href="#reviews" class="hover:text-cyan-400 transition">Reviews</a>
         <a href="#faq" class="hover:text-cyan-400 transition">FAQ</a>
         <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
       </nav>
@@ -191,19 +210,20 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[300px] max-w-[85vw] bg-[#090d1b] border-l border-white/10 z-[100] translate-x-full transition-transform duration-300">
+  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[310px] max-w-[85vw] bg-[#090d1b] border-l border-white/10 z-[100] translate-x-full transition-transform duration-300">
     <div class="p-5 border-b border-white/10 flex items-center justify-between">
       <div class="text-xl font-black clash">Menu</div>
       <button id="closeMobileMenu" class="glass h-10 w-10 rounded-lg">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
-
     <div class="p-5 flex flex-col gap-3 text-sm font-semibold">
       <a class="glass px-4 py-3 rounded-xl" href="#home">Home</a>
       <a class="glass px-4 py-3 rounded-xl" href="#shop">Shop</a>
+      <a class="glass px-4 py-3 rounded-xl" href="#compare">Before/After</a>
+      <a class="glass px-4 py-3 rounded-xl" href="#builder">Builder</a>
+      <a class="glass px-4 py-3 rounded-xl" href="#wizard">Wizard</a>
       <a class="glass px-4 py-3 rounded-xl" href="#portfolio">Portfolio</a>
-      <a class="glass px-4 py-3 rounded-xl" href="#reviews">Reviews</a>
       <a class="glass px-4 py-3 rounded-xl" href="#faq">FAQ</a>
       <a class="glass px-4 py-3 rounded-xl" href="#contact">Contact</a>
     </div>
@@ -260,7 +280,7 @@
     </div>
   </div>
 
-  <!-- Quick View Modal -->
+  <!-- Quick View -->
   <div id="quickViewModal" class="fixed inset-0 z-[120] hidden items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
     <div class="relative glass rounded-3xl max-w-4xl w-full overflow-hidden">
@@ -312,12 +332,12 @@
       </h1>
 
       <p class="text-gray-300 text-lg leading-8 max-w-xl mb-8">
-        Build a proper creator-brand with high-CTR thumbnails for gaming, coding, finance, podcast, tutorials, and more.
+        Fully loaded frontend storefront with smart filters, custom builder, strategy wizard, style picker, before/after comparison, and creator-focused order flow.
       </p>
 
       <div class="flex flex-wrap gap-4 mb-8">
         <a href="#shop" class="btn-main px-7 py-3 rounded-xl font-bold">Shop Now</a>
-        <a href="#portfolio" class="glass px-7 py-3 rounded-xl font-bold border border-white/10">View Work</a>
+        <a href="#wizard" class="glass px-7 py-3 rounded-xl font-bold border border-white/10 btn-soft">Try Strategy Wizard</a>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -343,15 +363,23 @@
     <div class="grid-pattern glass rounded-3xl p-4 md:p-6">
       <div class="grid grid-cols-2 gap-4">
         <div class="rounded-2xl overflow-hidden border border-cyan-500/20">
-          <img id="heroImg1" src="https://placehold.co/600x450/0a1227/22d3ee?text=UPLOAD+YOUR+THUMBNAIL" class="w-full h-52 object-cover" alt="Hero thumb 1">
+          <img src="https://placehold.co/600x450/0a1227/22d3ee?text=UPLOAD+YOUR+THUMBNAIL+1" class="w-full h-52 object-cover" alt="Hero thumb 1">
         </div>
         <div class="rounded-2xl overflow-hidden border border-purple-500/20">
-          <img id="heroImg2" src="https://placehold.co/600x450/180c2c/a855f7?text=UPLOAD+YOUR+WORK" class="w-full h-52 object-cover" alt="Hero thumb 2">
+          <img src="https://placehold.co/600x450/180c2c/a855f7?text=UPLOAD+YOUR+THUMBNAIL+2" class="w-full h-52 object-cover" alt="Hero thumb 2">
         </div>
         <div class="col-span-2 rounded-2xl overflow-hidden border border-blue-500/20">
-          <img id="heroImg3" src="https://placehold.co/1200x420/08111f/3b82f6?text=YOUR+PORTFOLIO+BANNER" class="w-full h-44 object-cover" alt="Hero banner">
+          <img src="https://placehold.co/1200x420/08111f/3b82f6?text=YOUR+PORTFOLIO+BANNER" class="w-full h-44 object-cover" alt="Hero banner">
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Live Ticker -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 pb-4">
+    <div class="glass rounded-2xl py-3 px-5 flex flex-wrap gap-3 items-center justify-center text-sm">
+      <span class="text-cyan-400 font-bold">Live activity</span>
+      <span id="activityTicker" class="text-gray-300">Gaming creator booked Pro Thumbnail</span>
     </div>
   </section>
 
@@ -380,7 +408,30 @@
     </div>
   </section>
 
-  <!-- Category Chips -->
+  <!-- Style Picker -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <div class="text-center mb-6">
+      <h2 class="text-3xl md:text-4xl font-black clash">CTR Style Picker</h2>
+      <p class="text-gray-400 mt-2">Help visitors choose a visual direction before ordering.</p>
+    </div>
+
+    <div id="stylePicker" class="flex flex-wrap gap-3 justify-center mb-6"></div>
+
+    <div class="max-w-4xl mx-auto glass rounded-3xl p-6 md:p-8">
+      <div class="grid md:grid-cols-2 gap-6 items-center">
+        <img id="stylePreviewImage" src="https://placehold.co/900x560/0b1328/22d3ee?text=AGGRESSIVE+STYLE" class="w-full rounded-2xl object-cover h-64" alt="Style preview">
+        <div>
+          <h3 id="stylePreviewTitle" class="text-3xl font-black mb-3">Aggressive</h3>
+          <p id="stylePreviewDesc" class="text-gray-300 leading-7 mb-5">Strong emotion, bigger contrast, sharper tension, high-impact layout.</p>
+          <button id="useStyleBtn" class="btn-main px-6 py-3 rounded-xl font-bold">
+            Use this style in order form
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop Categories -->
   <section class="max-w-7xl mx-auto px-4 md:px-6 py-8">
     <div id="shopCategories" class="flex flex-wrap gap-3 justify-center"></div>
   </section>
@@ -409,7 +460,6 @@
     </div>
 
     <div class="grid lg:grid-cols-[260px_1fr] gap-6">
-      <!-- Sidebar -->
       <aside class="glass rounded-3xl p-5 h-max sticky top-24">
         <h3 class="text-xl font-black mb-4">Filters</h3>
 
@@ -438,38 +488,236 @@
         </button>
       </aside>
 
-      <!-- Product Grid -->
       <div id="productGrid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
     </div>
   </section>
 
-  <!-- Benefits -->
-  <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-black clash">Why This Store Feels Real</h2>
-      <p class="text-gray-400 mt-3">Because good e-commerce is not only design — it’s flow, clarity, trust, and interaction.</p>
+  <!-- Before/After Compare -->
+  <section id="compare" class="section-space max-w-6xl mx-auto px-4 md:px-6 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl md:text-5xl font-black clash mb-3">Before / After Slider</h2>
+      <p class="text-gray-400">One of the strongest trust-building features for thumbnail services.</p>
     </div>
 
-    <div class="grid md:grid-cols-4 gap-6">
-      <div class="glass rounded-2xl p-6 text-center card-hover">
-        <i class="fa-solid fa-cart-shopping text-4xl text-cyan-400 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Cart Flow</h3>
-        <p class="text-gray-400 text-sm">Users can add, update, remove, and review products before ordering.</p>
+    <div class="glass rounded-3xl p-5 md:p-6">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <div id="compareBox" class="relative rounded-3xl overflow-hidden h-[300px] md:h-[420px] bg-black/30 select-none">
+            <img src="https://placehold.co/1000x700/1f2937/9ca3af?text=BEFORE+THUMBNAIL" class="absolute inset-0 w-full h-full object-cover" alt="Before">
+            <div id="afterWrapper" class="absolute inset-y-0 left-0 overflow-hidden" style="width: 50%;">
+              <img src="https://placehold.co/1000x700/0d1b24/22d3ee?text=AFTER+XERON+REDESIGN" class="absolute inset-0 w-[1000px] max-w-none h-full object-cover" alt="After">
+            </div>
+            <div id="compareLine" class="absolute top-0 bottom-0 w-1 bg-white left-1/2 -translate-x-1/2"></div>
+            <div id="compareHandle" class="compare-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white text-black flex items-center justify-center font-black">
+              ↔
+            </div>
+          </div>
+          <input id="compareRange" type="range" min="0" max="100" value="50" class="w-full mt-5 accent-cyan-400">
+        </div>
+
+        <div>
+          <h3 class="text-3xl font-black mb-4">Show the redesign difference instantly</h3>
+          <p class="text-gray-300 leading-7 mb-5">
+            Replace the before and after images with your real client transformations. This is one of the best ways to prove your value without long explanations.
+          </p>
+          <div class="space-y-3 text-sm text-gray-200">
+            <div>✓ Compare old thumbnail vs your redesign</div>
+            <div>✓ Builds trust fast</div>
+            <div>✓ Increases conversion quality</div>
+          </div>
+        </div>
       </div>
-      <div class="glass rounded-2xl p-6 text-center card-hover">
-        <i class="fa-solid fa-heart text-4xl text-pink-400 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Wishlist</h3>
-        <p class="text-gray-400 text-sm">Save products and bring users back to buying intent.</p>
+    </div>
+  </section>
+
+  <!-- Custom Package Builder -->
+  <section id="builder" class="section-space max-w-6xl mx-auto px-4 md:px-6 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl md:text-5xl font-black clash mb-3">Custom Package Builder</h2>
+      <p class="text-gray-400">A rare feature for small creator sites. Let visitors build their own package live.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="glass rounded-3xl p-6 md:p-8 space-y-5">
+        <div>
+          <label class="text-sm font-bold block mb-2">Number of thumbnails</label>
+          <input id="builderThumbCount" type="range" min="1" max="10" value="1" class="w-full accent-cyan-400">
+          <div class="text-sm text-gray-400 mt-2">Selected: <span id="builderThumbCountValue" class="text-white font-bold">1</span></div>
+        </div>
+
+        <div>
+          <label class="text-sm font-bold block mb-2">Revisions</label>
+          <select id="builderRevisions" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+            <option value="2">2 revisions</option>
+            <option value="5">5 revisions</option>
+            <option value="999">Unlimited revisions</option>
+          </select>
+        </div>
+
+        <div class="space-y-3">
+          <label class="flex items-center gap-3 text-sm"><input id="builderSourceFile" type="checkbox"> Include source file</label>
+          <label class="flex items-center gap-3 text-sm"><input id="builderRush" type="checkbox"> 12h rush delivery</label>
+          <label class="flex items-center gap-3 text-sm"><input id="builderTitleIdeas" type="checkbox"> Add title ideas</label>
+          <label class="flex items-center gap-3 text-sm"><input id="builderResearch" type="checkbox"> Add viral style research</label>
+        </div>
+
+        <div>
+          <label class="text-sm font-bold block mb-2">Preferred niche</label>
+          <select id="builderNiche" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+            <option>Gaming</option>
+            <option>Tech / Coding</option>
+            <option>Finance</option>
+            <option>Tutorial / Education</option>
+            <option>Podcast</option>
+          </select>
+        </div>
       </div>
-      <div class="glass rounded-2xl p-6 text-center card-hover">
-        <i class="fa-solid fa-filter text-4xl text-cyan-400 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Filter & Search</h3>
-        <p class="text-gray-400 text-sm">Makes the store feel usable instead of just decorative.</p>
+
+      <div class="glass rounded-3xl p-6 md:p-8 flex flex-col">
+        <h3 class="text-3xl font-black mb-4">Your Custom Package</h3>
+        <div id="builderSummary" class="space-y-3 text-gray-300 flex-1"></div>
+
+        <div class="mt-6">
+          <div class="text-sm text-gray-400 mb-2">Estimated price</div>
+          <div id="builderPrice" class="text-5xl font-black text-cyan-400 mb-4">₹149</div>
+
+          <div class="grid sm:grid-cols-2 gap-3">
+            <button id="builderAddCart" class="btn-main py-3 rounded-xl font-bold">Add Builder Package to Cart</button>
+            <button id="builderWhatsapp" class="glass py-3 rounded-xl font-bold border border-white/10">Send Builder Package</button>
+          </div>
+        </div>
       </div>
-      <div class="glass rounded-2xl p-6 text-center card-hover">
-        <i class="fa-solid fa-mobile-screen-button text-4xl text-cyan-400 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Responsive</h3>
-        <p class="text-gray-400 text-sm">Works on mobile and desktop with drawers and modals.</p>
+    </div>
+  </section>
+
+  <!-- Package Quiz -->
+  <section class="max-w-6xl mx-auto px-4 md:px-6 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl md:text-5xl font-black clash mb-3">Which Package Is Best For You?</h2>
+      <p class="text-gray-400">A simple recommendation quiz makes buying easier.</p>
+    </div>
+
+    <div class="glass rounded-3xl p-6 md:p-8">
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="budget" data-value="low">
+          <div class="font-bold mb-1">Low Budget</div>
+          <div class="text-sm text-gray-400">Best for new creators</div>
+        </button>
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="budget" data-value="mid">
+          <div class="font-bold mb-1">Mid Budget</div>
+          <div class="text-sm text-gray-400">Better for growing channels</div>
+        </button>
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="budget" data-value="high">
+          <div class="font-bold mb-1">High Impact</div>
+          <div class="text-sm text-gray-400">Go premium</div>
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="frequency" data-value="single">
+          <div class="font-bold mb-1">Need 1 Thumbnail</div>
+          <div class="text-sm text-gray-400">Occasional uploads</div>
+        </button>
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="frequency" data-value="multiple">
+          <div class="font-bold mb-1">Need Multiple</div>
+          <div class="text-sm text-gray-400">Regular uploads</div>
+        </button>
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="frequency" data-value="growth">
+          <div class="font-bold mb-1">Need Growth Help</div>
+          <div class="text-sm text-gray-400">Title ideas + direction</div>
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 mb-8">
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="speed" data-value="normal">
+          <div class="font-bold mb-1">Normal Speed</div>
+          <div class="text-sm text-gray-400">No rush</div>
+        </button>
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="speed" data-value="fast">
+          <div class="font-bold mb-1">Fast Delivery</div>
+          <div class="text-sm text-gray-400">Need it quickly</div>
+        </button>
+        <button class="quiz-option glass p-4 rounded-2xl text-left border border-white/10" data-q="speed" data-value="premium">
+          <div class="font-bold mb-1">Highest Quality</div>
+          <div class="text-sm text-gray-400">Need max impact</div>
+        </button>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <div class="text-sm text-gray-400 mb-2">Recommended package</div>
+        <div id="quizRecommendationTitle" class="text-3xl font-black mb-2">Answer the quiz</div>
+        <p id="quizRecommendationDesc" class="text-gray-300 mb-4">Pick one option in each row to get your package recommendation.</p>
+        <button id="quizUseRecommendation" class="btn-main px-6 py-3 rounded-xl font-bold">
+          Use Recommendation in Order Form
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wizard -->
+  <section id="wizard" class="section-space max-w-6xl mx-auto px-4 md:px-6 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl md:text-5xl font-black clash mb-3">Thumbnail Strategy Wizard</h2>
+      <p class="text-gray-400">This is the most unique feature: it generates a ready-made brief and recommends the right package.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="glass rounded-3xl p-6 md:p-8 space-y-4">
+        <input id="wizTopic" type="text" placeholder="Video topic / title idea" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+        <select id="wizNiche" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+          <option>Gaming</option>
+          <option>Tech / Coding</option>
+          <option>Finance</option>
+          <option>Tutorial / Education</option>
+          <option>Podcast</option>
+        </select>
+        <select id="wizAudience" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+          <option>Beginners</option>
+          <option>Intermediate viewers</option>
+          <option>Advanced niche audience</option>
+          <option>Mass audience</option>
+        </select>
+        <select id="wizEmotion" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+          <option>Shock</option>
+          <option>Curiosity</option>
+          <option>Trust</option>
+          <option>Luxury</option>
+          <option>Urgency</option>
+          <option>Fun / Humor</option>
+        </select>
+        <select id="wizFace" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+          <option>Show face strongly</option>
+          <option>Face optional</option>
+          <option>No face needed</option>
+        </select>
+        <select id="wizSpeed" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+          <option>Normal delivery</option>
+          <option>Fast delivery</option>
+          <option>Urgent 12h delivery</option>
+        </select>
+        <select id="wizStyle" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none">
+          <option>Aggressive</option>
+          <option>Clean</option>
+          <option>Luxury</option>
+          <option>Funny</option>
+          <option>Shock</option>
+        </select>
+
+        <button id="generateWizardBrief" class="btn-main w-full py-3 rounded-xl font-bold">
+          Generate Strategy Brief
+        </button>
+      </div>
+
+      <div class="glass rounded-3xl p-6 md:p-8">
+        <div class="text-sm text-gray-400 mb-2">Recommended package</div>
+        <div id="wizardPackage" class="text-3xl font-black mb-3">Pro Thumbnail</div>
+        <div class="text-sm text-gray-400 mb-2">Generated brief</div>
+        <textarea id="wizardBrief" rows="12" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-sm">Your strategy brief will appear here.</textarea>
+
+        <div class="grid sm:grid-cols-2 gap-3 mt-4">
+          <button id="wizardUseBrief" class="btn-main py-3 rounded-xl font-bold">Use in Order Form</button>
+          <button id="wizardSendWhatsapp" class="glass py-3 rounded-xl font-bold border border-white/10">Send Brief on WhatsApp</button>
+        </div>
       </div>
     </div>
   </section>
@@ -487,6 +735,45 @@
     </div>
 
     <div id="portfolioGrid" class="grid md:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Moodboard -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-black clash mb-3">Moodboard Directions</h2>
+      <p class="text-gray-400">Another premium feature most small sites don’t have.</p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="glass rounded-3xl overflow-hidden card-hover">
+        <img src="https://placehold.co/700x500/0a1227/22d3ee?text=DARK+HACKER" class="w-full h-52 object-cover" alt="">
+        <div class="p-5">
+          <h3 class="text-xl font-black mb-2">Dark Hacker</h3>
+          <p class="text-sm text-gray-400">Perfect for coding, tools, AI, and tech breakdown videos.</p>
+        </div>
+      </div>
+      <div class="glass rounded-3xl overflow-hidden card-hover">
+        <img src="https://placehold.co/700x500/1b1029/a855f7?text=HYPER+GAMING" class="w-full h-52 object-cover" alt="">
+        <div class="p-5">
+          <h3 class="text-xl font-black mb-2">Hyper Gaming</h3>
+          <p class="text-sm text-gray-400">High energy, face emotion, weapon glow, and tension visuals.</p>
+        </div>
+      </div>
+      <div class="glass rounded-3xl overflow-hidden card-hover">
+        <img src="https://placehold.co/700x500/1d1608/f59e0b?text=GOLD+FINANCE" class="w-full h-52 object-cover" alt="">
+        <div class="p-5">
+          <h3 class="text-xl font-black mb-2">Gold Finance</h3>
+          <p class="text-sm text-gray-400">Premium, trustworthy, dramatic market movement style.</p>
+        </div>
+      </div>
+      <div class="glass rounded-3xl overflow-hidden card-hover">
+        <img src="https://placehold.co/700x500/102020/10b981?text=MINIMAL+TUTORIAL" class="w-full h-52 object-cover" alt="">
+        <div class="p-5">
+          <h3 class="text-xl font-black mb-2">Minimal Tutorial</h3>
+          <p class="text-sm text-gray-400">Clean structure and educational clarity for explainers.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Reviews -->
@@ -539,7 +826,7 @@
           <i class="fa-solid fa-plus"></i>
         </button>
         <div class="faq-content hidden px-5 pb-5 text-sm text-gray-300 leading-7">
-          Add packages to cart, review them, and send the cart through WhatsApp, or use the custom order form below.
+          Add packages to cart, review them, send the cart through WhatsApp, or use the custom order form below.
         </div>
       </div>
 
@@ -549,7 +836,7 @@
           <i class="fa-solid fa-plus"></i>
         </button>
         <div class="faq-content hidden px-5 pb-5 text-sm text-gray-300 leading-7">
-          Yes. Just replace image URLs and text inside the `PRODUCTS` and `PORTFOLIO_ITEMS` arrays in the script.
+          Yes. Just replace the image URLs and text inside the data arrays in the script.
         </div>
       </div>
 
@@ -559,7 +846,7 @@
           <i class="fa-solid fa-plus"></i>
         </button>
         <div class="faq-content hidden px-5 pb-5 text-sm text-gray-300 leading-7">
-          Not in this version. This is fully functional from the frontend side. Payment can be added later with Razorpay or Stripe.
+          Not in this version. This version is fully functional from the frontend side. Payment can be added later.
         </div>
       </div>
 
@@ -569,7 +856,7 @@
           <i class="fa-solid fa-plus"></i>
         </button>
         <div class="faq-content hidden px-5 pb-5 text-sm text-gray-300 leading-7">
-          Yes. Cart and wishlist are stored in localStorage in the browser.
+          Yes. Cart and wishlist are stored in localStorage.
         </div>
       </div>
     </div>
@@ -604,7 +891,8 @@
             <input id="selectedPackage" type="text" placeholder="Selected Package" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none" readonly>
           </div>
 
-          <textarea id="idea" rows="5" placeholder="Describe your thumbnail idea..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none"></textarea>
+          <input id="selectedStyle" type="text" placeholder="Selected Style" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none" readonly>
+          <textarea id="idea" rows="6" placeholder="Describe your thumbnail idea..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none"></textarea>
 
           <button class="btn-main w-full py-4 rounded-xl font-bold text-lg">
             <i class="fa-brands fa-whatsapp mr-2"></i>Send Request on WhatsApp
@@ -633,7 +921,7 @@
 
           <div class="glass rounded-2xl p-4">
             <div class="font-bold mb-1">Easy Update</div>
-            <div class="text-gray-400">You only need to replace your image URLs and text data in one place.</div>
+            <div class="text-gray-400">You only need to replace image URLs and text in the arrays below later.</div>
           </div>
         </div>
 
@@ -661,17 +949,18 @@
           <div class="flex flex-col gap-2 text-sm text-gray-400">
             <a href="#home" class="hover:text-cyan-400">Home</a>
             <a href="#shop" class="hover:text-cyan-400">Shop</a>
-            <a href="#portfolio" class="hover:text-cyan-400">Portfolio</a>
-            <a href="#contact" class="hover:text-cyan-400">Contact</a>
+            <a href="#compare" class="hover:text-cyan-400">Before/After</a>
+            <a href="#builder" class="hover:text-cyan-400">Builder</a>
           </div>
         </div>
 
         <div>
-          <h4 class="font-bold mb-4">Policies</h4>
+          <h4 class="font-bold mb-4">Smart Features</h4>
           <div class="flex flex-col gap-2 text-sm text-gray-400">
+            <a href="#wizard" class="hover:text-cyan-400">Strategy Wizard</a>
+            <a href="#portfolio" class="hover:text-cyan-400">Portfolio</a>
             <a href="#faq" class="hover:text-cyan-400">FAQ</a>
             <a href="#contact" class="hover:text-cyan-400">Custom Orders</a>
-            <a href="#reviews" class="hover:text-cyan-400">Reviews</a>
           </div>
         </div>
 
@@ -701,7 +990,7 @@
 
   <script>
     /* ===============================
-       CHANGE ONLY THESE LATER
+       CHANGE THESE LATER
        =============================== */
 
     const WHATSAPP_NUMBER = "919876543210";
@@ -714,7 +1003,7 @@
         category: "gaming",
         categoryLabel: "Gaming",
         type: "single",
-        image: "https://placehold.co/800x520/0a1227/22d3ee?text=UPLOAD+YOUR+BASIC+THUMB",
+        image: "https://placehold.co/800x520/0a1227/22d3ee?text=UPLOAD+BASIC+THUMB",
         badge: "",
         stock: "In stock",
         description: "Perfect starter package for creators who need a clean and CTR-focused thumbnail fast.",
@@ -727,7 +1016,7 @@
         category: "coding",
         categoryLabel: "Coding",
         type: "premium",
-        image: "https://placehold.co/800x520/180c2c/a855f7?text=UPLOAD+YOUR+PRO+THUMB",
+        image: "https://placehold.co/800x520/180c2c/a855f7?text=UPLOAD+PRO+THUMB",
         badge: "Most Popular",
         stock: "Best seller",
         description: "A premium package for creators who want strong visual hierarchy, sharper branding, and more impact.",
@@ -740,7 +1029,7 @@
         category: "finance",
         categoryLabel: "Finance",
         type: "bundle",
-        image: "https://placehold.co/800x520/0d1b24/3b82f6?text=UPLOAD+YOUR+CREATOR+PACK",
+        image: "https://placehold.co/800x520/0d1b24/3b82f6?text=UPLOAD+CREATOR+PACK",
         badge: "",
         stock: "Popular bundle",
         description: "A growth-focused bundle with thumbnail, title idea, and viral presentation direction.",
@@ -753,7 +1042,7 @@
         category: "podcast",
         categoryLabel: "Podcast",
         type: "premium",
-        image: "https://placehold.co/800x520/1a1028/d946ef?text=UPLOAD+YOUR+PODCAST+PACK",
+        image: "https://placehold.co/800x520/1a1028/d946ef?text=UPLOAD+PODCAST+PACK",
         badge: "",
         stock: "Ready",
         description: "Made for podcast channels and talking-head content with bold typography and premium contrast.",
@@ -766,7 +1055,7 @@
         category: "tutorial",
         categoryLabel: "Tutorial",
         type: "single",
-        image: "https://placehold.co/800x520/102020/10b981?text=UPLOAD+YOUR+TUTORIAL+THUMB",
+        image: "https://placehold.co/800x520/102020/10b981?text=UPLOAD+TUTORIAL+THUMB",
         badge: "",
         stock: "In stock",
         description: "Clear and educational thumbnail package for tutorials, coding lessons, explainers, and guides.",
@@ -779,7 +1068,7 @@
         category: "gaming",
         categoryLabel: "Gaming",
         type: "bundle",
-        image: "https://placehold.co/800x520/0c1129/f97316?text=UPLOAD+YOUR+GAMING+BUNDLE",
+        image: "https://placehold.co/800x520/0c1129/f97316?text=UPLOAD+GAMING+BUNDLE",
         badge: "",
         stock: "Bundle",
         description: "A stronger package for gaming creators who need multiple high-energy thumbnails with aggressive click appeal.",
@@ -844,8 +1133,46 @@
       }
     ];
 
+    const STYLE_PRESETS = [
+      {
+        name: "Aggressive",
+        image: "https://placehold.co/900x560/0b1328/22d3ee?text=AGGRESSIVE+STYLE",
+        desc: "Strong emotion, bigger contrast, sharper tension, high-impact layout."
+      },
+      {
+        name: "Clean",
+        image: "https://placehold.co/900x560/102020/10b981?text=CLEAN+STYLE",
+        desc: "Minimal distractions, strong clarity, modern typography, and trust."
+      },
+      {
+        name: "Luxury",
+        image: "https://placehold.co/900x560/1d1608/f59e0b?text=LUXURY+STYLE",
+        desc: "Premium gold contrast, dark depth, bold authority, and rich finish."
+      },
+      {
+        name: "Funny",
+        image: "https://placehold.co/900x560/1b1029/f472b6?text=FUNNY+STYLE",
+        desc: "Bright expressions, exaggerated focus, bold text, and playful energy."
+      },
+      {
+        name: "Shock",
+        image: "https://placehold.co/900x560/2a0f0f/ef4444?text=SHOCK+STYLE",
+        desc: "Crisis tension, surprise emotion, bold highlights, and intense contrast."
+      }
+    ];
+
+    const ACTIVITY_ITEMS = [
+      "Gaming creator booked Pro Thumbnail",
+      "Finance channel added Creator Pack to cart",
+      "Tech creator saved Podcast Cover Pack to wishlist",
+      "Tutorial creator used the Strategy Wizard",
+      "Gaming creator sent custom builder request",
+      "Podcast channel viewed before/after comparison",
+      "New user subscribed for offers"
+    ];
+
     /* ===============================
-       APP LOGIC
+       STATE
        =============================== */
 
     let cart = JSON.parse(localStorage.getItem("xeron_cart")) || [];
@@ -855,21 +1182,30 @@
     let activeType = "all";
     let activePrice = "all";
     let activePortfolioCategory = "all";
+    let activeStyle = STYLE_PRESETS[0];
+    let quizState = { budget: null, frequency: null, speed: null };
+
+    /* ===============================
+       ELEMENTS
+       =============================== */
 
     const overlay = document.getElementById("globalOverlay");
     const toast = document.getElementById("toast");
     const toastText = document.getElementById("toastText");
-
     const mobileMenu = document.getElementById("mobileMenu");
     const cartDrawer = document.getElementById("cartDrawer");
     const wishlistDrawer = document.getElementById("wishlistDrawer");
-
     const cartItems = document.getElementById("cartItems");
     const wishlistItems = document.getElementById("wishlistItems");
     const cartSubtotal = document.getElementById("cartSubtotal");
     const cartCount = document.getElementById("cartCount");
     const wishlistCount = document.getElementById("wishlistCount");
     const selectedPackageInput = document.getElementById("selectedPackage");
+    const selectedStyleInput = document.getElementById("selectedStyle");
+
+    /* ===============================
+       HELPERS
+       =============================== */
 
     function saveState() {
       localStorage.setItem("xeron_cart", JSON.stringify(cart));
@@ -885,6 +1221,10 @@
       }, 2200);
     }
 
+    function formatPrice(price) {
+      return `₹${price}`;
+    }
+
     function openOverlay() {
       overlay.classList.add("overlay-show");
     }
@@ -897,9 +1237,8 @@
       mobileMenu.classList.remove("drawer-open");
       cartDrawer.classList.remove("drawer-open");
       wishlistDrawer.classList.remove("drawer-open");
-      const qv = document.getElementById("quickViewModal");
-      qv.classList.add("hidden");
-      qv.classList.remove("flex");
+      document.getElementById("quickViewModal").classList.add("hidden");
+      document.getElementById("quickViewModal").classList.remove("flex");
       closeOverlay();
     }
 
@@ -909,15 +1248,6 @@
       openOverlay();
     }
 
-    function updateCounts() {
-      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-      wishlistCount.textContent = wishlist.length;
-    }
-
-    function formatPrice(price) {
-      return `₹${price}`;
-    }
-
     function getProductById(id) {
       return PRODUCTS.find(item => item.id === id);
     }
@@ -925,6 +1255,48 @@
     function isInWishlist(id) {
       return wishlist.some(item => item.id === id);
     }
+
+    function updateCounts() {
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+      wishlistCount.textContent = wishlist.length;
+    }
+
+    function getCartSummaryText() {
+      if (!cart.length) return "";
+      return cart.map(item => `${item.title} x${item.qty}`).join(", ");
+    }
+
+    /* ===============================
+       RENDER: STYLE PICKER
+       =============================== */
+
+    function renderStylePicker() {
+      const container = document.getElementById("stylePicker");
+      container.innerHTML = STYLE_PRESETS.map(style => `
+        <button class="style-chip glass px-4 py-2 rounded-full border border-white/10 text-sm font-semibold ${style.name === activeStyle.name ? "active" : ""}" data-style="${style.name}">
+          ${style.name}
+        </button>
+      `).join("");
+
+      container.querySelectorAll(".style-chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const style = STYLE_PRESETS.find(s => s.name === btn.dataset.style);
+          activeStyle = style;
+          updateStylePreview();
+          renderStylePicker();
+        });
+      });
+    }
+
+    function updateStylePreview() {
+      document.getElementById("stylePreviewImage").src = activeStyle.image;
+      document.getElementById("stylePreviewTitle").textContent = activeStyle.name;
+      document.getElementById("stylePreviewDesc").textContent = activeStyle.desc;
+    }
+
+    /* ===============================
+       RENDER: SHOP CATEGORIES
+       =============================== */
 
     function renderShopCategories() {
       const container = document.getElementById("shopCategories");
@@ -947,26 +1319,9 @@
       });
     }
 
-    function renderPortfolioCategories() {
-      const container = document.getElementById("portfolioCategories");
-      const categories = ["all", ...new Set(PORTFOLIO_ITEMS.map(p => p.category))];
-
-      container.innerHTML = categories.map(cat => `
-        <button class="portfolio-chip glass px-4 py-2 rounded-full border border-white/10 text-sm font-semibold ${cat === "all" ? "active" : ""}" data-category="${cat}">
-          ${cat === "all" ? "All Portfolio" : cat.charAt(0).toUpperCase() + cat.slice(1)}
-        </button>
-      `).join("");
-
-      container.querySelectorAll(".portfolio-chip").forEach(btn => {
-        btn.addEventListener("click", () => {
-          container.querySelectorAll(".portfolio-chip").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          activePortfolioCategory = btn.dataset.category;
-          renderPortfolio();
-          document.getElementById("portfolio").scrollIntoView({ behavior: "smooth" });
-        });
-      });
-    }
+    /* ===============================
+       RENDER: PRODUCTS
+       =============================== */
 
     function getFilteredProducts() {
       const search = document.getElementById("searchInput").value.toLowerCase().trim();
@@ -1012,7 +1367,7 @@
       }
 
       grid.innerHTML = items.map(item => `
-        <div class="product-card glass rounded-3xl overflow-hidden card-hover" data-id="${item.id}">
+        <div class="glass rounded-3xl overflow-hidden card-hover">
           <div class="relative">
             <img src="${item.image}" class="w-full h-56 object-cover" alt="${item.title}">
             <div class="absolute top-3 left-3 ${item.badge ? "bg-purple-600" : "bg-black/60 backdrop-blur"} px-3 py-1 rounded-full text-xs font-bold">
@@ -1044,7 +1399,41 @@
         </div>
       `).join("");
 
-      bindProductEvents();
+      grid.querySelectorAll(".add-cart").forEach(btn => {
+        btn.addEventListener("click", () => addToCart(getProductById(btn.dataset.id)));
+      });
+
+      grid.querySelectorAll(".quick-view").forEach(btn => {
+        btn.addEventListener("click", () => openQuickView(getProductById(btn.dataset.id)));
+      });
+
+      grid.querySelectorAll(".wishlist-toggle").forEach(btn => {
+        btn.addEventListener("click", () => toggleWishlist(getProductById(btn.dataset.id)));
+      });
+    }
+
+    /* ===============================
+       RENDER: PORTFOLIO
+       =============================== */
+
+    function renderPortfolioCategories() {
+      const container = document.getElementById("portfolioCategories");
+      const categories = ["all", ...new Set(PORTFOLIO_ITEMS.map(p => p.category))];
+
+      container.innerHTML = categories.map(cat => `
+        <button class="portfolio-chip glass px-4 py-2 rounded-full border border-white/10 text-sm font-semibold ${cat === "all" ? "active" : ""}" data-category="${cat}">
+          ${cat === "all" ? "All Portfolio" : cat.charAt(0).toUpperCase() + cat.slice(1)}
+        </button>
+      `).join("");
+
+      container.querySelectorAll(".portfolio-chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          container.querySelectorAll(".portfolio-chip").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          activePortfolioCategory = btn.dataset.category;
+          renderPortfolio();
+        });
+      });
     }
 
     function renderPortfolio() {
@@ -1070,33 +1459,32 @@
       `).join("");
     }
 
-    function bindProductEvents() {
-      document.querySelectorAll(".add-cart").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const product = getProductById(btn.dataset.id);
-          addToCart(product);
-        });
-      });
+    /* ===============================
+       QUICK VIEW
+       =============================== */
 
-      document.querySelectorAll(".quick-view").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const product = getProductById(btn.dataset.id);
-          openQuickView(product);
-        });
-      });
-
-      document.querySelectorAll(".wishlist-toggle").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const product = getProductById(btn.dataset.id);
-          toggleWishlist(product);
-        });
-      });
+    function openQuickView(product) {
+      if (!product) return;
+      currentQuickViewProduct = product;
+      document.getElementById("quickViewImage").src = product.image;
+      document.getElementById("quickViewTitle").textContent = product.title;
+      document.getElementById("quickViewPrice").textContent = formatPrice(product.price);
+      document.getElementById("quickViewDesc").textContent = product.description;
+      document.getElementById("quickViewCategory").textContent = product.categoryLabel;
+      document.getElementById("quickViewFeatures").innerHTML = product.features.map(f => `<div class="text-sm text-gray-200">✓ ${f}</div>`).join("");
+      const qv = document.getElementById("quickViewModal");
+      qv.classList.remove("hidden");
+      qv.classList.add("flex");
+      openOverlay();
     }
+
+    /* ===============================
+       CART / WISHLIST
+       =============================== */
 
     function addToCart(product) {
       if (!product) return;
       const existing = cart.find(item => item.id === product.id);
-
       if (existing) existing.qty += 1;
       else cart.push({ ...product, qty: 1 });
 
@@ -1115,7 +1503,6 @@
         wishlist.push(product);
         showToast(`${product.title} added to wishlist`);
       }
-
       renderWishlist();
       renderProducts();
       saveState();
@@ -1131,10 +1518,8 @@
       }
 
       let subtotal = 0;
-
       cartItems.innerHTML = cart.map(item => {
         subtotal += item.price * item.qty;
-
         return `
           <div class="glass rounded-2xl p-4">
             <div class="flex gap-4">
@@ -1149,7 +1534,6 @@
                     <i class="fa-solid fa-trash"></i>
                   </button>
                 </div>
-
                 <div class="flex items-center justify-between mt-4">
                   <div class="flex items-center gap-2">
                     <button class="qty-btn glass h-8 w-8 rounded-lg" data-action="decrease" data-id="${item.id}">-</button>
@@ -1168,7 +1552,7 @@
       updateCounts();
       saveState();
 
-      document.querySelectorAll(".remove-cart").forEach(btn => {
+      cartItems.querySelectorAll(".remove-cart").forEach(btn => {
         btn.addEventListener("click", () => {
           cart = cart.filter(item => item.id !== btn.dataset.id);
           renderCart();
@@ -1176,15 +1560,13 @@
         });
       });
 
-      document.querySelectorAll(".qty-btn").forEach(btn => {
+      cartItems.querySelectorAll(".qty-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const item = cart.find(i => i.id === btn.dataset.id);
           if (!item) return;
-
           if (btn.dataset.action === "increase") item.qty += 1;
           if (btn.dataset.action === "decrease") item.qty -= 1;
           if (item.qty <= 0) cart = cart.filter(i => i.id !== btn.dataset.id);
-
           renderCart();
         });
       });
@@ -1212,7 +1594,6 @@
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </div>
-
               <div class="grid grid-cols-2 gap-3 mt-4">
                 <button class="move-to-cart btn-main py-2 rounded-xl text-sm font-bold" data-id="${item.id}">
                   Add to Cart
@@ -1229,7 +1610,7 @@
       updateCounts();
       saveState();
 
-      document.querySelectorAll(".remove-wishlist").forEach(btn => {
+      wishlistItems.querySelectorAll(".remove-wishlist").forEach(btn => {
         btn.addEventListener("click", () => {
           wishlist = wishlist.filter(item => item.id !== btn.dataset.id);
           renderWishlist();
@@ -1238,61 +1619,161 @@
         });
       });
 
-      document.querySelectorAll(".move-to-cart").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const product = getProductById(btn.dataset.id);
-          addToCart(product);
-        });
+      wishlistItems.querySelectorAll(".move-to-cart").forEach(btn => {
+        btn.addEventListener("click", () => addToCart(getProductById(btn.dataset.id)));
       });
 
-      document.querySelectorAll(".wishlist-view").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const product = getProductById(btn.dataset.id);
-          openQuickView(product);
-        });
+      wishlistItems.querySelectorAll(".wishlist-view").forEach(btn => {
+        btn.addEventListener("click", () => openQuickView(getProductById(btn.dataset.id)));
       });
     }
 
-    function openQuickView(product) {
-      if (!product) return;
-      currentQuickViewProduct = product;
+    /* ===============================
+       BEFORE / AFTER
+       =============================== */
 
-      document.getElementById("quickViewImage").src = product.image;
-      document.getElementById("quickViewTitle").textContent = product.title;
-      document.getElementById("quickViewPrice").textContent = formatPrice(product.price);
-      document.getElementById("quickViewDesc").textContent = product.description;
-      document.getElementById("quickViewCategory").textContent = product.categoryLabel;
-      document.getElementById("quickViewFeatures").innerHTML = product.features.map(f => `<div class="text-sm text-gray-200">✓ ${f}</div>`).join("");
-
-      const qv = document.getElementById("quickViewModal");
-      qv.classList.remove("hidden");
-      qv.classList.add("flex");
-      openOverlay();
+    function updateCompare(value) {
+      document.getElementById("afterWrapper").style.width = `${value}%`;
+      document.getElementById("compareLine").style.left = `${value}%`;
+      document.getElementById("compareHandle").style.left = `${value}%`;
     }
 
-    function clearFilters() {
-      activeCategory = "all";
-      activeType = "all";
-      activePrice = "all";
-      document.getElementById("searchInput").value = "";
-      document.getElementById("sortSelect").value = "default";
+    /* ===============================
+       BUILDER
+       =============================== */
 
-      document.querySelectorAll(".category-chip").forEach((btn, i) => {
-        btn.classList.toggle("active", i === 0);
-      });
+    function getBuilderPackage() {
+      const count = Number(document.getElementById("builderThumbCount").value);
+      const revisions = document.getElementById("builderRevisions").value;
+      const sourceFile = document.getElementById("builderSourceFile").checked;
+      const rush = document.getElementById("builderRush").checked;
+      const titleIdeas = document.getElementById("builderTitleIdeas").checked;
+      const research = document.getElementById("builderResearch").checked;
+      const niche = document.getElementById("builderNiche").value;
 
-      document.querySelectorAll(".filter-btn").forEach((btn, i) => {
-        btn.classList.toggle("active", i === 0);
-      });
+      let price = count * 149;
+      if (revisions === "5") price += 100;
+      if (revisions === "999") price += 220;
+      if (sourceFile) price += 80;
+      if (rush) price += 150;
+      if (titleIdeas) price += 70;
+      if (research) price += 120;
 
-      document.querySelector('input[name="priceRange"][value="all"]').checked = true;
-      renderProducts();
-      showToast("Filters cleared");
+      const summary = [
+        `${count} thumbnail${count > 1 ? "s" : ""}`,
+        revisions === "999" ? "Unlimited revisions" : `${revisions} revisions`,
+        sourceFile ? "Source file included" : "No source file",
+        rush ? "12h rush delivery" : "Normal delivery",
+        titleIdeas ? "Title ideas included" : "No title ideas",
+        research ? "Viral style research included" : "No research",
+        `Niche: ${niche}`
+      ];
+
+      return {
+        id: "builder-custom",
+        title: `Custom Builder Package (${count} thumbnail${count > 1 ? "s" : ""})`,
+        price,
+        category: "custom",
+        categoryLabel: "Custom",
+        type: "premium",
+        image: "https://placehold.co/800x520/111827/22d3ee?text=CUSTOM+PACKAGE",
+        stock: "Custom",
+        description: `Custom-built package for ${niche}.`,
+        features: summary
+      };
     }
 
-    function getCartSummaryText() {
-      if (!cart.length) return "";
-      return cart.map(item => `${item.title} x${item.qty}`).join(", ");
+    function renderBuilder() {
+      const pkg = getBuilderPackage();
+      document.getElementById("builderThumbCountValue").textContent = document.getElementById("builderThumbCount").value;
+      document.getElementById("builderPrice").textContent = formatPrice(pkg.price);
+      document.getElementById("builderSummary").innerHTML = pkg.features.map(f => `<div>✓ ${f}</div>`).join("");
+    }
+
+    /* ===============================
+       QUIZ
+       =============================== */
+
+    function updateQuizRecommendation() {
+      const title = document.getElementById("quizRecommendationTitle");
+      const desc = document.getElementById("quizRecommendationDesc");
+
+      if (!quizState.budget || !quizState.frequency || !quizState.speed) {
+        title.textContent = "Answer the quiz";
+        desc.textContent = "Pick one option in each row to get your package recommendation.";
+        return;
+      }
+
+      let recommendation = "Basic Thumbnail";
+      let explanation = "Good for first-time creators who want a clean starter design.";
+
+      if (quizState.frequency === "growth" || quizState.budget === "high") {
+        recommendation = "Creator Pack";
+        explanation = "Best when you want stronger growth support, title ideas, and strategic direction.";
+      } else if (quizState.budget === "mid" || quizState.speed === "fast" || quizState.speed === "premium") {
+        recommendation = "Pro Thumbnail";
+        explanation = "Best balance of quality, revisions, and stronger visual impact.";
+      } else if (quizState.frequency === "multiple") {
+        recommendation = "Gaming Bundle";
+        explanation = "Better if you upload regularly and need multiple thumbnails.";
+      }
+
+      title.textContent = recommendation;
+      desc.textContent = explanation;
+    }
+
+    /* ===============================
+       WIZARD
+       =============================== */
+
+    function generateWizard() {
+      const topic = document.getElementById("wizTopic").value.trim() || "Untitled video";
+      const niche = document.getElementById("wizNiche").value;
+      const audience = document.getElementById("wizAudience").value;
+      const emotion = document.getElementById("wizEmotion").value;
+      const face = document.getElementById("wizFace").value;
+      const speed = document.getElementById("wizSpeed").value;
+      const style = document.getElementById("wizStyle").value;
+
+      let recommended = "Pro Thumbnail";
+      if (speed.includes("Urgent") || style === "Luxury") recommended = "Pro Thumbnail";
+      if (emotion === "Trust" && niche.includes("Finance")) recommended = "Creator Pack";
+      if (style === "Funny" || style === "Shock") recommended = "Creator Pack";
+      if (audience === "Beginners" && speed === "Normal delivery") recommended = "Basic Thumbnail";
+
+      const brief =
+`Video topic: ${topic}
+Niche: ${niche}
+Audience: ${audience}
+Target emotion: ${emotion}
+Face direction: ${face}
+Delivery speed: ${speed}
+Preferred style: ${style}
+
+Design strategy:
+- Create a thumbnail optimized for ${emotion.toLowerCase()}.
+- Use a ${style.toLowerCase()} direction that matches ${niche.toLowerCase()} content.
+- Keep the layout readable for ${audience.toLowerCase()}.
+- ${face}.
+- Prioritize strong contrast, curiosity, and clean hierarchy.
+- Make the visual promise obvious within 1 second.
+
+Recommended package: ${recommended}`;
+
+      document.getElementById("wizardPackage").textContent = recommended;
+      document.getElementById("wizardBrief").value = brief;
+    }
+
+    /* ===============================
+       ACTIVITY TICKER
+       =============================== */
+
+    function startActivityTicker() {
+      let idx = 0;
+      setInterval(() => {
+        idx = (idx + 1) % ACTIVITY_ITEMS.length;
+        document.getElementById("activityTicker").textContent = ACTIVITY_ITEMS[idx];
+      }, 2500);
     }
 
     /* ===============================
@@ -1316,16 +1797,8 @@
     });
 
     document.getElementById("closeQuickView").addEventListener("click", closeAllPanels);
-
-    document.getElementById("quickAddCart").addEventListener("click", () => {
-      if (!currentQuickViewProduct) return;
-      addToCart(currentQuickViewProduct);
-    });
-
-    document.getElementById("quickWishlist").addEventListener("click", () => {
-      if (!currentQuickViewProduct) return;
-      toggleWishlist(currentQuickViewProduct);
-    });
+    document.getElementById("quickAddCart").addEventListener("click", () => currentQuickViewProduct && addToCart(currentQuickViewProduct));
+    document.getElementById("quickWishlist").addEventListener("click", () => currentQuickViewProduct && toggleWishlist(currentQuickViewProduct));
 
     document.querySelectorAll(".filter-btn").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -1345,7 +1818,19 @@
 
     document.getElementById("searchInput").addEventListener("input", renderProducts);
     document.getElementById("sortSelect").addEventListener("change", renderProducts);
-    document.getElementById("clearFilters").addEventListener("click", clearFilters);
+
+    document.getElementById("clearFilters").addEventListener("click", () => {
+      activeCategory = "all";
+      activeType = "all";
+      activePrice = "all";
+      document.getElementById("searchInput").value = "";
+      document.getElementById("sortSelect").value = "default";
+      document.querySelectorAll(".category-chip").forEach((b, i) => b.classList.toggle("active", i === 0));
+      document.querySelectorAll(".filter-btn").forEach((b, i) => b.classList.toggle("active", i === 0));
+      document.querySelector('input[name="priceRange"][value="all"]').checked = true;
+      renderProducts();
+      showToast("Filters cleared");
+    });
 
     document.getElementById("checkoutBtn").addEventListener("click", () => {
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
@@ -1354,14 +1839,9 @@
     });
 
     document.getElementById("cartToWhatsapp").addEventListener("click", () => {
-      if (!cart.length) {
-        showToast("Cart is empty");
-        return;
-      }
-
+      if (!cart.length) return showToast("Cart is empty");
       const lines = cart.map(item => `- ${item.title} x${item.qty} = ${formatPrice(item.price * item.qty)}`).join("\n");
       const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-
       const message = `Hi XERON, I want to order these packages:\n\n${lines}\n\nSubtotal: ${formatPrice(subtotal)}`;
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
     });
@@ -1375,10 +1855,7 @@
     document.getElementById("newsletterForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const email = document.getElementById("newsletterEmail").value.trim();
-      if (!email) {
-        alert("Please enter your email.");
-        return;
-      }
+      if (!email) return alert("Please enter your email.");
       this.reset();
       showToast("Subscribed successfully");
     });
@@ -1393,6 +1870,67 @@
       });
     });
 
+    document.getElementById("compareRange").addEventListener("input", e => updateCompare(e.target.value));
+
+    document.getElementById("builderThumbCount").addEventListener("input", renderBuilder);
+    document.getElementById("builderRevisions").addEventListener("change", renderBuilder);
+    document.getElementById("builderSourceFile").addEventListener("change", renderBuilder);
+    document.getElementById("builderRush").addEventListener("change", renderBuilder);
+    document.getElementById("builderTitleIdeas").addEventListener("change", renderBuilder);
+    document.getElementById("builderResearch").addEventListener("change", renderBuilder);
+    document.getElementById("builderNiche").addEventListener("change", renderBuilder);
+
+    document.getElementById("builderAddCart").addEventListener("click", () => {
+      const pkg = getBuilderPackage();
+      selectedPackageInput.value = pkg.title;
+      addToCart(pkg);
+    });
+
+    document.getElementById("builderWhatsapp").addEventListener("click", () => {
+      const pkg = getBuilderPackage();
+      const msg = `Hi XERON, I want this custom package:\n\nTitle: ${pkg.title}\nPrice: ${formatPrice(pkg.price)}\n\nFeatures:\n- ${pkg.features.join("\n- ")}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    });
+
+    document.getElementById("useStyleBtn").addEventListener("click", () => {
+      selectedStyleInput.value = activeStyle.name;
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+      showToast(`${activeStyle.name} style added to order form`);
+    });
+
+    document.querySelectorAll(".quiz-option").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const group = btn.dataset.q;
+        document.querySelectorAll(`.quiz-option[data-q="${group}"]`).forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        quizState[group] = btn.dataset.value;
+        updateQuizRecommendation();
+      });
+    });
+
+    document.getElementById("quizUseRecommendation").addEventListener("click", () => {
+      const recommendation = document.getElementById("quizRecommendationTitle").textContent;
+      if (recommendation === "Answer the quiz") return showToast("Complete the quiz first");
+      selectedPackageInput.value = recommendation;
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+      showToast("Recommendation added to order form");
+    });
+
+    document.getElementById("generateWizardBrief").addEventListener("click", generateWizard);
+
+    document.getElementById("wizardUseBrief").addEventListener("click", () => {
+      selectedPackageInput.value = document.getElementById("wizardPackage").textContent;
+      document.getElementById("idea").value = document.getElementById("wizardBrief").value;
+      selectedStyleInput.value = document.getElementById("wizStyle").value;
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+      showToast("Wizard brief added to order form");
+    });
+
+    document.getElementById("wizardSendWhatsapp").addEventListener("click", () => {
+      const brief = document.getElementById("wizardBrief").value;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi XERON, here is my strategy brief:\n\n" + brief)}`, "_blank");
+    });
+
     document.getElementById("orderForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -1402,11 +1940,11 @@
       const budget = document.getElementById("budget").value.trim();
       const deadline = document.getElementById("deadline").value.trim();
       const selectedPackage = selectedPackageInput.value.trim() || getCartSummaryText() || "Custom request";
+      const selectedStyle = selectedStyleInput.value.trim() || "Not selected";
       const idea = document.getElementById("idea").value.trim();
 
       if (!name || !contact || !niche) {
-        alert("Please fill Name, Contact, and Niche.");
-        return;
+        return alert("Please fill Name, Contact, and Niche.");
       }
 
       const message =
@@ -1416,6 +1954,7 @@ Name: ${name}
 Contact: ${contact}
 Niche: ${niche}
 Package: ${selectedPackage}
+Style: ${selectedStyle}
 Budget: ${budget || "Not provided"}
 Deadline: ${deadline || "Not provided"}
 Idea: ${idea || "Not provided"}`;
@@ -1424,17 +1963,24 @@ Idea: ${idea || "Not provided"}`;
     });
 
     /* ===============================
-       INITIAL RENDER
+       INIT
        =============================== */
 
+    renderStylePicker();
+    updateStylePreview();
     renderShopCategories();
-    renderPortfolioCategories();
     renderProducts();
+    renderPortfolioCategories();
     renderPortfolio();
     renderCart();
     renderWishlist();
+    renderBuilder();
+    updateQuizRecommendation();
+    updateCompare(50);
+    generateWizard();
     updateCounts();
     saveState();
+    startActivityTicker();
   </script>
 </body>
 </html>
